@@ -1,0 +1,463 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-red: #E50914;
+    --dark-bg: #0b0b0b;
+    --card-bg: #1a1a1a;
+    --text-color: #f5f5f5;
+    --text-muted: #aaa;
+    /* FONT UPDATE: Added Orbitron as a primary font variable */
+    --font-family-headline: 'Orbitron', sans-serif;
+    --font-family-body: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-body);
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.divider {
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-red);
+    margin: 0 auto 3rem;
+}
+
+.content-section {
+    padding: 100px 0;
+}
+
+/* --- Header & Navbar --- */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.4s ease, padding 0.4s ease;
+    padding: 20px 0;
+}
+
+#navbar.scrolled {
+    background-color: rgba(11, 11, 11, 0.9);
+    padding: 15px 0;
+    backdrop-filter: blur(10px);
+}
+
+#navbar nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--primary-red);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-red);
+    transition: width 0.3s ease-out;
+}
+
+.nav-links a:hover {
+    color: var(--primary-red);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    background: url('http://googleusercontent.com/image_collection/image_retrieval/7913483089531055252_0') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* FONT UPDATE: Applying Orbitron font */
+.animated-headline {
+    font-family: var(--font-family-headline);
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+    animation: fadeInDown 1.5s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1.5s ease-out 0.5s;
+    animation-fill-mode: backwards;
+}
+
+.btn-glossy {
+    padding: 15px 35px;
+    background: var(--primary-red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-red);
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+    /* Animation delay adjusted for countdown */
+    animation: fadeInUp 1.5s ease-out 1.2s;
+    animation-fill-mode: backwards;
+    margin-top: 2rem;
+    display: inline-block;
+}
+
+.btn-glossy:hover {
+    background: transparent;
+    color: var(--primary-red);
+    transform: translateY(-3px);
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Countdown Timer Styles --- */
+#countdown-container {
+    margin: 2.5rem 0;
+    animation: fadeInUp 1.5s ease-out 0.8s;
+    animation-fill-mode: backwards;
+}
+
+.countdown-title {
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-family: var(--font-family-headline);
+}
+
+#countdown div {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #222;
+    padding: 1rem;
+    border-radius: 5px;
+    min-width: 100px;
+    text-align: center;
+}
+
+#countdown span:first-child {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--text-color);
+    display: block;
+}
+
+#countdown span:last-child {
+    font-family: var(--font-family-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+}
+
+/* --- About Section --- */
+#about p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* --- Achievements Section --- */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.achievement-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #222;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.achievement-card .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.achievement-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+}
+
+.achievement-card p {
+    color: var(--text-muted);
+}
+
+/* --- Team Section --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.team-member img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.team-member:hover img {
+    transform: scale(1.1);
+}
+
+.member-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    padding: 1.5rem;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.team-member:hover .member-info {
+    transform: translateY(0);
+}
+
+.member-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+}
+
+.member-info p {
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
+/* --- Gallery Section --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.7);
+}
+
+/* --- Contact Section --- */
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-icon {
+    color: var(--text-color);
+    font-size: 2rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--primary-red);
+    transform: scale(1.2);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #000;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+footer p {
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-red);
+}
+
+/* --- Scroll Animations --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    h2 { font-size: 2rem; }
+    .animated-headline { font-size: 3rem; }
+    
+    #navbar nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
+    #countdown {
+        gap: 0.5rem;
+    }
+
+    #countdown div {
+        min-width: 70px;
+        padding: 0.5rem;
+    }
+
+    #countdown span:first-child {
+        font-size: 1.8rem;
+    }
+}
